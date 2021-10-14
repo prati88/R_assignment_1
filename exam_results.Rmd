@@ -1,0 +1,72 @@
+---
+title: "Exam_answers"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+Answer No. 1
+b) each column is a variable, each row is the observation
+```
+
+```{r}
+Answer No. 2
+It useful to organize data in such a way because each type of observational data forms a table.
+```
+
+```{r}
+Answer No. 3
+b) `pivot_wider`, `pivot_longer`, `separate`
+```
+
+```{r}
+Answer No. 4
+ a) `summarise`, `filter`, `select`
+```
+
+```{r}
+install.packages("nycflights13")
+library(nycflights13)
+library(tidyverse)
+```
+```{r}
+setwd("D:C:\Users\OneDrive - University of Bergen\PhD_88\Courses\R_Autumn21\exam_")
+myData <- ("flights")
+```
+
+```{r}
+Write a short code that would find:
+
+    a) flights that arrived more than two hours late, but didn’t leave late
+    b) the most delayed flights.
+```
+```{r}
+myData %>% 
+  
+```
+
+```{r}
+3. What does this code do?
+  It summarizes delay by year month and day.
+```
+
+```{r}
+data("mpg")
+
+ggplot(mpg, aes(class)) + geom_histogram(mapping = NULL, data = NULL, stat = "bin",
+                                         position = "stack", class,binwidth = NULL, 
+                                         bins = NULL, na.rm = FALSE, orientation = NA, 
+                                         show.legend = NA, 
+                                         inherit.aes = TRUE)
+
+
+
+```
+
+```{r}
+
+```
+

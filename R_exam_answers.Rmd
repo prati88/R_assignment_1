@@ -1,0 +1,128 @@
+---
+title: "R_exam_2021"
+author: "Prati"
+date: "07 10 2021"
+output: html_document
+---
+setwd("C:/Users/pba081/OneDrive - University of Bergen/PhD_88/Courses/R_Autumn21")
+####Installing tidyverse and here
+```{r}
+install.packages("tidyverse")
+library(tidyverse)
+```
+```{r}
+install.packages("here")
+library(here)
+```
+####reading my working data
+```{r}
+myData <- read.delim("exam_data.txt")
+```
+####exploring data
+```{r}
+head(myData)
+```
+
+```{r}
+tail(myData, 20)
+```
+###summary
+```{r}
+summary(myData)
+```
+####separate first column
+```{r}
+myData %>%
+  separate(col = subject, into = c("id", "name"), sep = "-")
+```
+### view data
+```{r}
+view(myData)
+```
+
+### installing additional packages
+```{r}
+install.packages(c("finalfit","skimr","naniar"))
+```
+###
+```{r}
+finalfit::ff_glimpse(myData)
+```
+###exploring duplicate column
+
+```{r}
+skimr::skim(myData)
+```
+
+```{r}
+summary(myData)
+```
+###some columns are duplicate
+```{r}
+myData %>% 
+  select(test_id, X1_test_id)
+```
+
+###removing duplicate columns
+```{r}
+myData %>% 
+  select(-X1_test_id)
+```
+```{r}
+view(myData)
+```
+
+```{r}
+myData %>% 
+  mutate(age_female = if_else(age_female > 1, "0", "1"))
+```
+
+```{r}
+view(myData)
+```
+
+```{r}
+myData <-
+  myData %>% 
+  mutate(ID = 1:n())
+```
+
+```{r}
+myData
+```
+```{r}
+glimpse(myData)
+```
+
+
+```{r}
+myData %>% 
+  count(result)
+```
+
+```{r}
+myData %>% 
+  count(demo_group)
+```
+
+
+####missing values in the dataset
+```{r}
+naniar::gg_miss_var(myData)
+```
+###yes there are missung values for subject, age and gender, payor_group and patient_class.
+
+```{r}
+myData %>% 
+  count(drive_thru_ind)
+```
+##Answer No. 4
+```{r}
+myData %>% 
+  filter(drive_thru_ind == "1") %>%
+  count(result)
+```
+####No there are no more negative tests in the drive-through.
+
+###short note on RMD:RMD is a R markdown file which is used to better create complete reports. It uses text, code and output side by side. RMD files are easily reproducible.
+
